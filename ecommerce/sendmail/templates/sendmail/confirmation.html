@@ -1,0 +1,29 @@
+{% extends "shop/base.html" %}
+{% load static %}
+
+{% block titre %}
+ <title>Message</title>
+{% endblock titre %}
+
+{% block navbar %}
+{% include "shop/navbar_sans_recherche.html" %}
+{% endblock navbar %}
+
+{% block content %}
+
+<div class="wrapper">
+    <header>
+        {% comment %} La condition vérifie si l'utilisateur a entrer son nom l'ors d'envoie du message {% endcomment %}
+        {% if name %}      
+        <div class="confirmation-message">
+            <p>Merci <strong>{{ name }}</strong>, nous avons reçu votre message.</p>
+            <div class="response">
+                😊 Nous vous répondrons très prochainement à l'adresse e-mail suivante : <strong>{{ email }}</strong>
+            </div>
+        </div>
+        {% else %}
+        <p>Envoyez-nous un message <a href="{% url 'contact:sendmail' %}">ici</a></p>
+        {% endif %}
+    </header>
+</div>
+{% endblock content %}

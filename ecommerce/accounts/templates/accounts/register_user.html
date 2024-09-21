@@ -1,0 +1,105 @@
+{% extends "shop/base.html" %}
+
+{% block navbar %}
+    <header style="font-size: 16px;">
+        {% include "shop/navbar_sans_recherche.html" %}
+    </header>
+{% endblock navbar %}
+
+{% block content %}
+    <style>
+        .form-container {
+            max-width: 600px; /* Limite la largeur du conteneur du formulaire */
+            margin: 50px auto; /* Centre le formulaire horizontalement */
+            padding: 20px;
+            background-color: #f8f9fa; /* Fond gris clair */
+            border-radius: 8px; /* Bord arrondi pour le formulaire */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre légère */
+        }
+        .form-control {
+            margin-bottom: 15px; /* Espacement entre les champs */
+        }
+        .btn-primary {
+            background-color: #28a745; /* Couleur de fond du bouton "S'inscrire" */
+            border: none; /* Enlève la bordure du bouton */
+            padding: 10px 20px; /* Padding du bouton */
+            font-size: 16px; /* Taille de police du bouton */
+            border-radius: 4px; /* Bord arrondi pour le bouton */
+        }
+        .btn-primary:hover {
+            background-color: #218838; /* Couleur au survol */
+        }
+        .form-heading {
+            margin-bottom: 30px; /* Espacement sous le titre */
+            font-size: 1.5rem; /* Taille de police du titre */
+            color: #343a40; /* Couleur du texte du titre */
+            text-align: center; /* Centre le titre */
+        }
+        .form-footer {
+            margin-top: 20px; /* Espacement au-dessus du pied de page du formulaire */
+            text-align: center; /* Centre le texte */
+        }
+        .form-footer a {
+            color: #007bff; /* Couleur des liens */
+        }
+        .form-footer a:hover {
+            text-decoration: underline; /* Souligne les liens au survol */
+        }
+        .alert {
+            margin-bottom: 15px; /* Espacement sous les alertes */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <h4 class="form-heading">S'enregistrer ici</h4>
+            <form action="" method="post">
+                {% csrf_token %}
+                
+                {% for message in messages %}
+                    <div class="alert alert-danger" role="alert">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+                
+                <div class="form-group">
+                    <label for="username">Nom</label>
+                    <input type="text" name="username" id="username" class="form-control" placeholder="Entrer votre nom">
+                </div>
+                
+                <div class="form-group">
+                    <label for="firstname">Post-nom</label>
+                    <input type="text" name="firstname" id="firstname" class="form-control" placeholder="Entrer votre post-nom" >
+                </div>
+                
+                <div class="form-group">
+                    <label for="lastname">Prénom</label>
+                    <input type="text" name="lastname" id="lastname" class="form-control" placeholder="Entrer votre Prénom" >
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" class="form-control" placeholder="Entrer votre email" >
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Mot de passe</label>
+                    <input type="password" id="password" name="password" class="form-control" placeholder="Entrer le mot de passe" >
+                </div>
+                
+                <div class="form-group">
+                    <label for="password1">Confirmer le mot de passe</label>
+                    <input type="password" id="password1" name="password1" class="form-control" placeholder="Confirmer le mot de passe" >
+                </div>
+                
+                <button type="submit" class="btn btn-primary">S'inscrire</button>
+            </form>
+            
+            <div class="form-footer">
+                <p>Déjà inscrit? <a href="{% url 'accounts:login_user' %}">Se connecter</a></p>
+            </div>
+        </div>
+    </div>
+    
+{% endblock content %}

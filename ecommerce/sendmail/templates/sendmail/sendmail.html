@@ -1,0 +1,51 @@
+{% extends "shop/base.html" %}
+{% load static %}
+
+{% block titre %}
+ <title>Message</title>
+{% endblock titre %}
+
+{% block navbar %}
+{% include "shop/navbar_sans_recherche.html" %}
+{% endblock navbar %}
+
+
+{% block content %}
+
+<body>
+    <div class="wrapper">
+        <header>
+            Envoyez-nous un message
+        </header>
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="dbl-field">
+                <div class="field">
+                    <input type="text" name="name" placeholder="Entrez votre nom" required>
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="field">
+                    <input type="email" name="email" placeholder="Entrez votre address e-mail" required>
+                    <i class="fas fa-envelope"></i>
+                </div>
+            </div>
+            <div class="dbl-field">
+                <div class="field">
+                    <input type="number" name="phone" placeholder="Entrez votre numéro de téléphone" required>
+                    <i class="fas fa-phone-alt"></i>
+                </div>
+            </div>
+            <div class="message">
+                
+                <textarea placeholder="Ecrivez votre message"  name="message" id="message"></textarea>
+            </div>
+            <div class="button-area">
+                <button type="submit">Envoyer le message</button>
+                <span></span>
+            </div>
+        </form>
+    </div>
+    
+</body>
+
+{% endblock content %}

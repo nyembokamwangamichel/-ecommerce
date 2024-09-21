@@ -1,0 +1,40 @@
+{% extends "shop/base.html" %} 
+{% comment %} l'héritage du code qui est dans le fichier base.html {% endcomment %}
+
+{% comment %} le titre de la page {% endcomment %}
+{% block titre %}
+  <title>Detail</title>
+{% endblock titre %}
+
+{% comment %} j'utilise le block pour le navbar du fichier base.html, mais
+j'utilise pas le navbar de la base mais plutôt un autre qui n'a pas la bare de recherche {% endcomment %}
+{% block navbar %}
+    <header style="font-size: 16px;">
+        {% include "shop/navbar_sans_recherche.html" %}
+    </header>
+{% endblock navbar %}
+
+
+{% comment %} le corps de la page {% endcomment %}
+{% block content %}
+<div class="container mt-4">
+    <div class="row" >
+        <div class="col-md-6" style="width:100%">
+            <img src="{{ product.image.url }}" style="width: 400px;"  class="img-fluid" alt="{{ product.title }}">
+        </div>
+        <div class="col-md-6">
+            <h1 class="text-warning">{{ product.title }}</h1>
+            <h3 class="text-danger mb-4">Prix : $ {{ product.price }}</h3>
+            <p class="mb-4">{{ product.description }}</p>
+
+        {% comment %} la filtre  timesince : me permet d'afficher dans combien des temps le produit à été publier {% endcomment %}
+            <p>Publié il y a {{ product.date_added|timesince }}</p>
+        
+        {% comment %} la condition vérifie si l'utilisateur est connecté {% endcomment %}
+            {% if user.is_authenticated %}
+            <a href="{% url 'store:add_to_cart' product.id %}"><button class="btn ted btn-success">Ajouter</button></a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock content %}

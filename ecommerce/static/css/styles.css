@@ -1,0 +1,17 @@
+/* Styles pour le formulaire d'inscription */
+.container {
+    max-width: 500px; /* Limite la largeur du conteneur du formulaire */
+}
+
+.form-group {
+    margin-bottom: 1rem; /* Espacement entre les champs */
+}
+
+.form-control-sm {
+    font-size: 0.875rem; /* Taille de police plus petite pour les champs */
+}
+
+.btn-sm {
+    padding: 0.25rem 0.5rem; /* Réduit le padding des boutons */
+    font-size: 0.875rem; /* Taille de police plus petite pour les boutons */
+}

@@ -1,0 +1,17 @@
+{% extends "shop/base.html" %}
+{% block navbar %}
+    <header style="font-size: 16px;">
+        {% include "shop/navbar_sans_recherche.html" %}
+    </header>
+{% endblock navbar %}
+{% block content %}
+  
+{% autoescape off %}
+Bievenue sur maïck login système 
+Bonjour {{ name }}
+Confirmer votre addresse en cliquant sur le lien suivant
+lien:https//{{domain}}{% url 'accounts:activate' uidb64=uid token=token %}  
+{% endautoescape %}
+
+{% endblock content %}
+
